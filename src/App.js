@@ -281,7 +281,7 @@ class App extends Component {
         return <Crossword data={this.state.currentData} />;
       case "coloring":
         return <DrawingWrap >
-          <CanvasDraw brushColor={"red"} imgSrc={"./img/background.jpg"} />
+          <CanvasDraw brushColor={"red"} imgSrc={this.state.data} />
           <button
             onClick={() => {
               localStorage.setItem(
@@ -292,10 +292,12 @@ class App extends Component {
           >save</button>
         </DrawingWrap>
         case "memory":
-        return <MemoryGame />;
+          return;
+        // return <MemoryGame />;
       case "compare":
         return <CompareWrap>
           <ReactCompareImage leftImage="./img/Waldo_1.jpg" rightImage="./img/Waldo_2.jpg" />
+          {/* <CompareForm data={this.state.currentData}/> */}
         </CompareWrap>
       case "slider":
         return <Slider size={2} />;

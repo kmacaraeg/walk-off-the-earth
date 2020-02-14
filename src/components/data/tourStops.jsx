@@ -17,7 +17,7 @@ const tourStops = [
       "city": "Los Angeles",
       "state": "California",
       "game": "compare",
-      "data": "none"
+      "data":  ["",""]
     },
     {
       "date1": 2,
@@ -26,7 +26,7 @@ const tourStops = [
       "city": "El Cajon",
       "state": "California",
       "game": "coloring",
-      "data": "none"
+      "data": "WOTE_ColoringBook_4"
     },
     {
       "date1": 2,
