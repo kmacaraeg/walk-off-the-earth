@@ -166,25 +166,6 @@ const CompareWrap = styled.div`
 
 `
 
-// const Wrap = styled.div`
-//   font-size: 120px;
-// `;
-
-// const GameContainer = styled.div`
-
-//   display: flex;
-
-//   `
-
-// const PanelContainer = styled.div`
-//   width: 200px;
-//   order: -1;
-// `;
-
-// const BoardContainer = styled.div`
-//   flex: 1;
-// `;
-
 class App extends Component {
 
   state = {
@@ -213,22 +194,15 @@ class App extends Component {
   }
 
   componentDidUpdate = () => {
-    // console.log(this.state.currentGame)
 
-    // check badges
-    // if badges are complete
-    // Change gameCompleted
-    // GivePrize
-
-    // if (this.state.completedColoring > 0 && this.state.completedCrosswords > 0 && this.state.completedWaldo > 0 && this.state.completedPuzzle > 0) {
-    //   alert("congratulations!")
-    // }
     console.log("component did update // current game = " + this.state.currentGame)
 
   }
 
   finishGame = () => {
+
     this.setState({ gameCompleted: true });
+
   }
 
   changeGame = (game, city, state, date, data) => {
@@ -252,22 +226,16 @@ class App extends Component {
     switch (expr) {
       case "crossword":
         return "blue";
-        break;
       case "coloring":
         return "orange";
-        break;
       case "memory":
         return "yellow";
-        break;
       case "compare":
         return "pink";
-        break;
       case "slider":
         return "gray";
-        break;
       case "home":
         return "lightblue";
-        break;
     }
   }
 
@@ -280,31 +248,26 @@ class App extends Component {
         // this.setState({ currentCity: "no city" });
         this.setState({ completedCrosswords: (this.state.completedCrosswords + 1) })
         return;
-        break;
       case "coloring":
         // this.setState({ currentGame: "home" });
         // this.setState({ currentCity: "no city" });
         this.setState({ completedColoring: (this.state.completedMemory + 1) })
         return;
-        break;
       case "memory":
         // this.setState({ currentGame: "home" });
         // this.setState({ currentCity: "no city" });
         this.setState({ completedMemory: (this.state.completedMemory + 1) })
         return;
-        break;
       case "compare":
         // this.setState({ currentGame: "home" });
         // this.setState({ currentCity: "no city" });
         this.setState({ completedWaldo: (this.state.completedWaldo + 1) })
         return;
-        break;
       case "slider":
         // this.setState({ currentGame: "home" });
         // this.setState({ currentCity: "no city" });
         this.setState({ completedPuzzle: (this.state.completedPuzzle + 1) })
         return;
-        break;
     }
   }
 
@@ -316,16 +279,10 @@ class App extends Component {
         return mapVector()
       case "crossword":
         return <Crossword data={this.state.currentData} />;
-        break;
-      // case "coloring":
-      //   return <DrawingWrap coloringImage={"url(img/background.jpg);"}>
-      //       <CanvasDraw />
-      //   </DrawingWrap>
-      //   break;
-        case "coloring":
-            return <DrawingWrap >
-                <CanvasDraw  brushColor={"red"} imgSrc={"./img/background.jpg"}/>
-                <button
+      case "coloring":
+        return <DrawingWrap >
+          <CanvasDraw brushColor={"red"} imgSrc={"./img/background.jpg"} />
+          <button
             onClick={() => {
               localStorage.setItem(
                 "savedDrawing",
@@ -333,18 +290,15 @@ class App extends Component {
               );
             }}
           >save</button>
-            </DrawingWrap>
-            break;
-      case "memory":
+        </DrawingWrap>
+        case "memory":
         return <MemoryGame />;
-        break;
       case "compare":
-        return <CompareWrap><ReactCompareImage leftImage="./img/Waldo_1.jpg" rightImage="./img/Waldo_2.jpg" />
-          </CompareWrap>
-        break;
+        return <CompareWrap>
+          <ReactCompareImage leftImage="./img/Waldo_1.jpg" rightImage="./img/Waldo_2.jpg" />
+        </CompareWrap>
       case "slider":
         return <Slider size={2} />;
-        break;
     }
 
   }
@@ -353,19 +307,18 @@ class App extends Component {
     const expr = arg
     switch (expr) {
       case "crossword":
-        return <MapListBadgeCrossword type={expr} />;
+        return <MapListBadgeCrossword type={expr} count={this.state.completedCrosswords}/>;
       case "coloring":
-        return <MapListBadgeColoring type={expr} />;
+        return <MapListBadgeColoring type={expr} count={this.state.completedColoring}/>;
       case "memory":
-        return <MapListBadgeMemory type={expr} />;
+        return <MapListBadgeMemory type={expr} count={this.state.completedMemory}/>;
       case "compare":
-        return <MapListBadgeCompare type={expr} />;
+        return <MapListBadgeCompare type={expr} count={this.state.completedCompare}/>;
       case "slider":
-        return <MapListBadgeSlider type={expr} />;
+        return <MapListBadgeSlider type={expr} count={this.state.completedSlider}/>;
 
     }
   }
-
 
 
   render() {
@@ -412,14 +365,8 @@ class App extends Component {
 
                   <MapRender currentGame={this.state.currentGame}>
                     <GameWrap>
-                      {/* {this.state.currentCity} */}
                       {this.renderGame(this.state.currentGame)}
-
                     </GameWrap>
-                    {/* <CompleteGameButton currentGame={this.state.currentGame} onClick={() => { this.completeCurrentGame(this.state.currentGame) }}>
-
-                      complete game</CompleteGameButton> */}
-
                   </MapRender>
 
                 </Map>
