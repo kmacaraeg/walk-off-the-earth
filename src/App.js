@@ -9,6 +9,7 @@ import mapVector from './components/mapVector';
 import MemoryGame from "./components/memoryGame";
 // import Drawing, { brushCustom } from 'react-drawing';
 import CanvasDraw from "react-canvas-draw";
+import CompareImgInput from "./components/CompareImgInput";
 
 import {
   BrowserRouter as Router,
@@ -31,7 +32,9 @@ const Scoreboard = styled.div`
 const Badge = styled.div`
 
   padding: 20px;
-  // background-color: ${props => props.color || "red"}
+  height: 20px;
+  width: 20ppx
+  background-image: ${props => "url(" + props.icon + ")"}
 
 `
 
@@ -116,38 +119,49 @@ const GameWrap = styled.div`
 
 const MapListBadgeCrossword = styled.div`
 
-  height: 40px;
-  width: 40px;
-  background-color:  blue;
+  height: 20px;
+  width: 20px;
+  // background-color:  blue;
+  background-image: url(img/crossword-01.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
 `
 
 const MapListBadgeColoring = styled.div`
 
-  height: 40px;
-  width: 40px;
-  background-color:  orange;
+height: 20px;
+width: 20px;
+  background-image: url(img/coloring-01.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
 `
 const MapListBadgeMemory = styled.div`
 
-  height: 40px;
-  width: 40px;
-  background-color:  yellow;
+height: 20px;
+width: 20px;
+  background-image: url(img/memory-01.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
 `
 const MapListBadgeCompare = styled.div`
 
-  height: 40px;
-  width: 40px;
-  background-color:  pink;
+height: 20px;
+width: 20px;
+  background-image: url(img/compare-01.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
 `
 const MapListBadgeSlider = styled.div`
 
-  height: 40px;
-  width: 40px;
-  background-color:  gray;
+height: 20px;
+width: 20px;
+  background-image: url(img/slider-01.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
 `
 
@@ -173,7 +187,6 @@ class App extends Component {
 
     completedCrosswords: 0,
     completedColoring: 0,
-    completedMemory: 0,
     completedPuzzle: 0,
     completedWaldo: 0,
 
@@ -184,18 +197,17 @@ class App extends Component {
     currentCity: "no city",
     currentState: "no state",
     currentDate: "no date",
-    currentDate: "no data",
+    currentData: "no data",
   }
 
   componentDidMount = () => {
-
-
 
   }
 
   componentDidUpdate = () => {
 
     console.log("component did update // current game = " + this.state.currentGame)
+    console.log("component did update // current data = " + this.state.currentData)
 
   }
 
@@ -228,11 +240,9 @@ class App extends Component {
         return "blue";
       case "coloring":
         return "orange";
-      case "memory":
-        return "yellow";
-      case "compare":
-        return "pink";
       case "slider":
+        return "pink";
+      case "waldo":
         return "gray";
       case "home":
         return "lightblue";
@@ -244,36 +254,22 @@ class App extends Component {
     console.log("score added for " + expr)
     switch (expr) {
       case "crossword":
-        // this.setState({ currentGame: "home" });
-        // this.setState({ currentCity: "no city" });
         this.setState({ completedCrosswords: (this.state.completedCrosswords + 1) })
         return;
       case "coloring":
-        // this.setState({ currentGame: "home" });
-        // this.setState({ currentCity: "no city" });
         this.setState({ completedColoring: (this.state.completedMemory + 1) })
         return;
-      case "memory":
-        // this.setState({ currentGame: "home" });
-        // this.setState({ currentCity: "no city" });
-        this.setState({ completedMemory: (this.state.completedMemory + 1) })
-        return;
-      case "compare":
-        // this.setState({ currentGame: "home" });
-        // this.setState({ currentCity: "no city" });
-        this.setState({ completedWaldo: (this.state.completedWaldo + 1) })
-        return;
       case "slider":
-        // this.setState({ currentGame: "home" });
-        // this.setState({ currentCity: "no city" });
-        this.setState({ completedPuzzle: (this.state.completedPuzzle + 1) })
+        this.setState({ completedWaldo: (this.state.completedSlider + 1) })
+        return;
+      case "waldo":
+        this.setState({ completedPuzzle: (this.state.completedWaldo + 1) })
         return;
     }
   }
 
   renderGame = (arg, data) => {
     const expr = arg
-    // console.log("complete current game " + expr)
     switch (expr) {
       case "home":
         return mapVector()
@@ -281,7 +277,7 @@ class App extends Component {
         return <Crossword data={this.state.currentData} />;
       case "coloring":
         return <DrawingWrap >
-          <CanvasDraw brushColor={"red"} imgSrc={this.state.data} />
+          <CanvasDraw brushColor={"red"} imgSrc={"./img/" + this.state.currentData} />
           <button
             onClick={() => {
               localStorage.setItem(
@@ -291,16 +287,10 @@ class App extends Component {
             }}
           >save</button>
         </DrawingWrap>
-        case "memory":
-          return;
-        // return <MemoryGame />;
-      case "compare":
-        return <CompareWrap>
-          <ReactCompareImage leftImage="./img/Waldo_1.jpg" rightImage="./img/Waldo_2.jpg" />
-          {/* <CompareForm data={this.state.currentData}/> */}
-        </CompareWrap>
       case "slider":
         return <Slider size={2} />;
+        case "waldo":
+          return <CompareImgInput data={this.state.currentData}/>
     }
 
   }
@@ -312,16 +302,20 @@ class App extends Component {
         return <MapListBadgeCrossword type={expr} count={this.state.completedCrosswords}/>;
       case "coloring":
         return <MapListBadgeColoring type={expr} count={this.state.completedColoring}/>;
-      case "memory":
-        return <MapListBadgeMemory type={expr} count={this.state.completedMemory}/>;
-      case "compare":
-        return <MapListBadgeCompare type={expr} count={this.state.completedCompare}/>;
       case "slider":
         return <MapListBadgeSlider type={expr} count={this.state.completedSlider}/>;
-
-    }
+        case "waldo":
+            return <MapListBadgeSlider type={expr} count={this.state.completedWaldo}/>;
+      }
   }
 
+  renderCompletionStatus(game, count) {
+    const expr = game
+    let badgeString = "'img/" + expr + "-0" + count + ".png'"
+    console.log(badgeString)
+    return <Badge icon={badgeString}/>
+
+  }
 
   render() {
 
@@ -331,11 +325,13 @@ class App extends Component {
 
           <Scoreboard>
             {/* <RenderBadges gameStatus={gameStatus} badges={this.state.badges} /> */}
-            <Badge>{this.state.completedCrosswords}</Badge>
+           {this.renderCompletionStatus(this.state.currentGame)}
+
+            <Badge>{this.renderCompletionStatus("crossword", this.state.completedCrosswords)}</Badge>            
+            {/* <Badge>{this.state.completedCrosswords}</Badge>
             <Badge>{this.state.completedColoring}</Badge>
-            <Badge>{this.state.completedMemory}</Badge>
             <Badge>{this.state.completedWaldo}</Badge>
-            <Badge>{this.state.completedPuzzle}</Badge>
+            <Badge>{this.state.completedPuzzle}</Badge> */}
           </Scoreboard>
 
           <Switch>
@@ -366,6 +362,7 @@ class App extends Component {
                   </TourStopList>
 
                   <MapRender currentGame={this.state.currentGame}>
+                  {this.state.currentData}
                     <GameWrap>
                       {this.renderGame(this.state.currentGame)}
                     </GameWrap>
@@ -378,6 +375,7 @@ class App extends Component {
             </Route>
 
             <Route path="/map">
+            <CompareImgInput data={this.state.currentData}/>
             </Route>
             <Route path="/*">
             </Route>

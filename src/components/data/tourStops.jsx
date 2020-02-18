@@ -1,4 +1,5 @@
 import crosswordSF from "./crosswordSF"
+import crosswordLA from "./crosswordLA"
 
 const tourStops = [
     {
@@ -7,8 +8,8 @@ const tourStops = [
       "venue": "Palace of the Fine Arts",
       "city": "San Francisco",
       "state": "California",
-      "game": "crossword",
-      "data": crosswordSF
+      "game": "coloring",
+      "data": "WOTE_ColoringBook_4.png"
     },
     {
       "date1": 2,
@@ -16,8 +17,8 @@ const tourStops = [
       "venue": "Palace Theatre",
       "city": "Los Angeles",
       "state": "California",
-      "game": "compare",
-      "data":  ["",""]
+      "game": "crossword",
+      "data": crosswordLA
     },
     {
       "date1": 2,
@@ -26,7 +27,7 @@ const tourStops = [
       "city": "El Cajon",
       "state": "California",
       "game": "coloring",
-      "data": "WOTE_ColoringBook_4"
+      "data": "WOTE_ColoringBook_3.png"
     },
     {
       "date1": 2,
@@ -34,8 +35,8 @@ const tourStops = [
       "venue": "Fox Performing Arts Center",
       "city": "Riverside",
       "state": "California",
-      "game": "memory",
-      "data": "none"
+      "game": "waldo",
+      "data": ["123","456","789"]
     },
     {
       "date1": 2,
@@ -44,7 +45,7 @@ const tourStops = [
       "city": "Phoenix",
       "state": "Arizona",
       "game": "slider",
-      "data": "none"
+      "data": ""
     },
     {
       "date1": 2,
@@ -61,7 +62,7 @@ const tourStops = [
       "venue": "The Aztec Theater",
       "city": "San Antonio",
       "state": "Texas",
-      "game": "memory",
+      "game": "waldo",
       "data": "none"
     },
     {
@@ -88,7 +89,7 @@ const tourStops = [
       "venue": "Buckhead Theatre",
       "city": "Atlanta",
       "state": "Georgia",
-      "game": "memory",
+      "game": "waldo",
       "data": "none"
     },
     {
@@ -115,8 +116,8 @@ const tourStops = [
       "venue": "The Fillmore",
       "city": "Philadelphia",
       "state": "Pennsylvania",
-      "game": "compare",
-      "data": "none"
+      "game": "waldo",
+      "data": ["123", "456", "789"]
     },
     {
       "date1": 4,
@@ -151,7 +152,7 @@ const tourStops = [
       "venue": "Paramount Theatre",
       "city": "Ashbury Park",
       "state": "New Jersey",
-      "game": "memory",
+      "game": "waldo",
       "data": "none"
     },
     {
@@ -160,7 +161,7 @@ const tourStops = [
       "venue": "Whitaker Center",
       "city": "Harrisburg",
       "state": "Pennsylvania",
-      "game": "compare",
+      "game": "waldo",
       "data": "none"
     },
     {
@@ -196,7 +197,7 @@ const tourStops = [
       "venue": "The Center for the Performin Arts",
       "city": "Camel",
       "state": "Indiana",
-      "game": "compare",
+      "game": "waldo",
       "data": "none"
     },
     {
