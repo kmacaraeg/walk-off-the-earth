@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Crossword from "react-crossword";
 import Slider from "react-slider-game";
-// import ReactCompareImage from 'react-compare-image';
 import tourStops from './components/data/tourStops.jsx';
 // import MemoryGame from "react-memory-game";
 import mapVector from './components/mapVector';
@@ -19,6 +18,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+import { timingSafeEqual } from 'crypto';
 
 const Scoreboard = styled.div`
 
@@ -32,10 +32,11 @@ const Scoreboard = styled.div`
 `
 const Badge = styled.div`
 
-  padding: 20px;
+margin: 5px;
   height: 20px;
-  width: 20ppx
-  background-image: ${props => "url(" + props.icon + ")"}
+  width: 20px;
+  background-image: ${props => "url(" + props.star + ")"};
+  background-size: cover;
 
 `
 
@@ -99,16 +100,11 @@ const MapRender = styled.div`
   display:flex;
   flex-direction: column;
 
+  .compareImageInput {
+    width: 400px;
+  }
+
 `
-
-// const CompleteGameButton = styled.div`
-
-//   display: ${props => (props.currentGame == "home" ? "none" : "block")};
-//   margin: 20px;
-//   padding: 20px;
-//   background-color: white;
-
-// `
 
 const GameWrap = styled.div`
 
@@ -131,36 +127,27 @@ const MapListBadgeCrossword = styled.div`
 
 const MapListBadgeColoring = styled.div`
 
-height: 20px;
-width: 20px;
+  height: 20px;
+  width: 20px;
   background-image: url(img/coloring-01.png);
   background-size: contain;
   background-repeat: no-repeat;
 
 `
-const MapListBadgeMemory = styled.div`
+const MapListBadgeWaldo = styled.div`
 
-height: 20px;
-width: 20px;
-  background-image: url(img/memory-01.png);
+  height: 20px;
+  width: 20px;
+  background-image: url(img/waldo-01.png);
   background-size: contain;
   background-repeat: no-repeat;
 
 `
-const MapListBadgeCompare = styled.div`
+const MapListBadgePuzzle = styled.div`
 
-height: 20px;
-width: 20px;
-  background-image: url(img/compare-01.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-
-`
-const MapListBadgeSlider = styled.div`
-
-height: 20px;
-width: 20px;
-  background-image: url(img/slider-01.png);
+  height: 20px;
+  width: 20px;
+  background-image: url(img/puzzle-01.png);
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -193,12 +180,16 @@ class App extends Component {
 
     gameStart: true,
     gameCompleted: false,
+    gameState: 0,
 
     currentGame: "home",
     currentCity: "no city",
     currentState: "no state",
     currentDate: "no date",
     currentData: "no data",
+    currentData2: "no data2",
+
+    modalShown: false
   }
 
   componentDidMount = () => {
@@ -209,6 +200,11 @@ class App extends Component {
 
     console.log("component did update // current game = " + this.state.currentGame)
     console.log("component did update // current data = " + this.state.currentData)
+    console.log("data2 = " + this.state.currentData2)
+
+    if (this.state.completedCrosswords > 0 && this.state.completedColoring > 0 && this.state.completedPuzzle > 0 && this.state.completedWaldo > 0 && this.state.gameState === 0) {
+      this.setState({gameState: 1})
+    }
 
   }
 
@@ -218,17 +214,20 @@ class App extends Component {
 
   }
 
-  changeGame = (game, city, state, date, data) => {
+  changeGame = (game, city, state, date, data, data2) => {
+    console.log(data2)
     const newGame = game;
     const newCity = city;
     const newState = state;
     const newDate = date;
     const newData = data;
+    const newData2 = data2;
     this.setState({ currentGame: newGame });
     this.setState({ currentCity: newCity });
     this.setState({ currentAction: newState });
     this.setState({ currentDate: newDate });
     this.setState({ currentData: newData });
+    this.setState({ currentData2: newData2 });
     console.log("previous game " + this.state.currentGame);
     this.completeCurrentGame(newGame)
   }
@@ -241,7 +240,7 @@ class App extends Component {
         return "blue";
       case "coloring":
         return "orange";
-      case "slider":
+      case "puzzle":
         return "pink";
       case "waldo":
         return "gray";
@@ -258,13 +257,13 @@ class App extends Component {
         this.setState({ completedCrosswords: (this.state.completedCrosswords + 1) })
         return;
       case "coloring":
-        this.setState({ completedColoring: (this.state.completedMemory + 1) })
+        this.setState({ completedColoring: (this.state.completedColoring + 1) })
         return;
-      case "slider":
-        this.setState({ completedWaldo: (this.state.completedSlider + 1) })
+      case "puzzle":
+        this.setState({ completedPuzzle: (this.state.completedPuzzle + 1) })
         return;
       case "waldo":
-        this.setState({ completedPuzzle: (this.state.completedWaldo + 1) })
+        this.setState({ completedWaldo: (this.state.completedWaldo + 1) })
         return;
     }
   }
@@ -288,10 +287,10 @@ class App extends Component {
             }}
           >save</button>
         </DrawingWrap>
-      case "slider":
+      case "puzzle":
         return <Slider size={2} />;
         case "waldo":
-          return <CompareImgInput data={this.state.currentData}/>
+          return <CompareImgInput className="compareImageInput" data={this.state.currentData} rightImage={this.state.currentData2}/>
     }
 
   }
@@ -303,18 +302,22 @@ class App extends Component {
         return <MapListBadgeCrossword type={expr} count={this.state.completedCrosswords}/>;
       case "coloring":
         return <MapListBadgeColoring type={expr} count={this.state.completedColoring}/>;
-      case "slider":
-        return <MapListBadgeSlider type={expr} count={this.state.completedSlider}/>;
-        case "waldo":
-            return <MapListBadgeSlider type={expr} count={this.state.completedWaldo}/>;
+      case "puzzle":
+        return <MapListBadgePuzzle type={expr} count={this.state.completedPuzzle}/>;
+      case "waldo":
+        return <MapListBadgeWaldo type={expr} count={this.state.completedWaldo}/>;
       }
   }
 
   renderCompletionStatus(game, count) {
     const expr = game
+    if (count > 2) {
+      return "'img/" + expr + "-0" + "3" + ".png'"
+    }
+
     let badgeString = "'img/" + expr + "-0" + count + ".png'"
     console.log(badgeString)
-    return <Badge icon={badgeString}/>
+    return badgeString
 
   }
 
@@ -326,13 +329,13 @@ class App extends Component {
 
           <Scoreboard>
             {/* <RenderBadges gameStatus={gameStatus} badges={this.state.badges} /> */}
-           {this.renderCompletionStatus(this.state.currentGame)}
+          
+            <Badge star={this.renderCompletionStatus("crossword", this.state.completedCrosswords)}></Badge>            
 
-            <Badge>{this.renderCompletionStatus("crossword", this.state.completedCrosswords)}</Badge>            
-            {/* <Badge>{this.state.completedCrosswords}</Badge>
-            <Badge>{this.state.completedColoring}</Badge>
-            <Badge>{this.state.completedWaldo}</Badge>
-            <Badge>{this.state.completedPuzzle}</Badge> */}
+            <Badge star={this.renderCompletionStatus("coloring", this.state.completedColoring)}></Badge>            
+            <Badge star={this.renderCompletionStatus("puzzle", this.state.completedPuzzle)}></Badge>            
+            <Badge star={this.renderCompletionStatus("waldo", this.state.completedWaldo)}></Badge>            
+          {this.state.gameState}
           </Scoreboard>
 
           <Switch>
@@ -348,7 +351,7 @@ class App extends Component {
 
                       {tourStops && tourStops.map((x, i) => (
                         <MapListItem soma onClick={
-                          this.changeGame.bind(this, x.game, x.city, x.state, x.date, x.data)
+                          this.changeGame.bind(this, x.game, x.city, x.state, x.date, x.data, x.data2)
                         }  >
 
                           <div>{x.city}. {x.date1} / {x.date2} - {x.game}
@@ -363,7 +366,7 @@ class App extends Component {
                   </TourStopList>
 
                   <MapRender currentGame={this.state.currentGame}>
-                  {this.state.currentData}
+                  {/* {this.state.currentData} */}
                     <GameWrap>
                       {this.renderGame(this.state.currentGame)}
                     </GameWrap>

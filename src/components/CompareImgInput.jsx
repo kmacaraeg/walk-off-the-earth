@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import tourStops from './data/tourStops';
+import ReactCompareImage from 'react-compare-image';
 
 class CompareImgInput extends Component{
 
     constructor(props){
         super(props);
-
-        // this.state = {
-        //     entry: ""
-        // }
         this.submitData = this.submitData.bind(this);
 
-      }
+      };
 
 
     state = {
         value: 'init',
         answers: ["test"],
-        // answersHTML: ""
-
-    }
+    };
 
     inputData = event =>{
         this.setState({ arr: event.target.value});
-    }
+    };
 
     submitData(event){
         event.preventDefault();
         const {arr} = this.state;
+        // this.setState({answers: ["test2"]})
+        let tempArr = this.state.answers;
+        tempArr.push("test2");
+        this.setState({answers: tempArr})
+    };
 
-        const matches = "fuckkkk";
-        if(matches){
-
-            console.log(event.target.title)
-        }
-    }
-
-    newArr = this.props.data;
+    newArr = this.props.data
     
     componentDidMount() {
 
@@ -46,32 +39,19 @@ class CompareImgInput extends Component{
             arr: this.props.data
         })
 
-    }
+    };
 
     componentDidUpdate = () => {
 
             if(this.props.data.includes(this.state.entry)){
-                alert("eeee" + this.state.entry)
                 const str = this.state.entry
-
-                alert(str)
-
                 var index = this.props.data.indexOf(this.state.entry)
                 this.props.data.splice(index,1)
-
-                let tempArr =this.state.answers
-                tempArr.push(str)
-                alert(tempArr)
-                
-                // if(this.state.answers !== )
-
-                // }   
-
             } 
 
+            console.log(this.props.rightImage)
 
-
-    }
+    };
 
 
     handleEntryChange = (event) => {
@@ -80,7 +60,7 @@ class CompareImgInput extends Component{
             entry: event.target.value
         })
 
-    }
+    };
 
     renderAnswers = () => {
         
@@ -89,21 +69,24 @@ class CompareImgInput extends Component{
                 {answers}
             </div>
         ))
-    }
+    };
 
     render(){ 
         return(
             <div>
-          <form >
-
-            {this.state.entry}
-            <br/>
-            {this.state.answers}
-
-            <input name="title" type="text" value={this.state.entry} onChange={this.handleEntryChange} />
-             <input type="submit" value="Submit"  />
-          </form>
-            <div className="answers"></div>
+                <ReactCompareImage leftImage="/img/Waldo_OG.jpg" rightImage={"img/" + this.props.rightImage} />
+                {/* <ReactCompareImage leftImage="/img/Waldo_OG.jpg" rightImage={"/img/Waldo_OG.jpg"} /> */}
+                <form >
+                    {/* {this.state.entry} */}
+                    <br/>
+                    <input name="title" type="text" value={this.state.entry} onChange={this.handleEntryChange} />
+                    <input type="submit" value="Submit" onClick={this.submitData}  />
+                </form>
+                <div className="answers">
+                    {this.state.answers.map((x, i) => (
+                        <div>{x}</div>
+                    ))}
+                </div>
             </div>
 
         )
@@ -112,9 +95,8 @@ class CompareImgInput extends Component{
 }
 
 CompareImgInput.propTypes = {
-    data: React.propTypes
+    data: React.propTypes,
+    rightImage: React.propTypes
 }
 
 export default CompareImgInput
-
-// want to be able to update in html

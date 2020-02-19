@@ -36,7 +36,8 @@ const tourStops = [
       "city": "Riverside",
       "state": "California",
       "game": "waldo",
-      "data": ["123","456","789"]
+      "data": ["123","456","789"],
+      "data2": "Waldo_1.jpg"
     },
     {
       "date1": 2,
@@ -44,7 +45,7 @@ const tourStops = [
       "venue": "The Van Buren",
       "city": "Phoenix",
       "state": "Arizona",
-      "game": "slider",
+      "game": "puzzle",
       "data": ""
     },
     {
@@ -98,7 +99,7 @@ const tourStops = [
       "venue": "Walker Theatre",
       "city": "Chattanooga",
       "state": "Tennesee",
-      "game": "slider",
+      "game": "puzzle",
       "data": "none"
     },
     {
@@ -125,7 +126,7 @@ const tourStops = [
       "venue": "The National",
       "city": "Richmond",
       "state": "Virginia",
-      "game": "slider",
+      "game": "puzzle",
       "data": "none"
     },
     {
@@ -179,7 +180,7 @@ const tourStops = [
       "venue": "20 Monroe Live",
       "city": "Grand Rapids",
       "state": "Michigan",
-      "game": "slider",
+      "game": "puzzle",
       "data": "none"
     },
     {
@@ -206,7 +207,7 @@ const tourStops = [
       "venue": "Athenaeum Theatre",
       "city": "Chicago",
       "state": "Illinois",
-      "game": "slider",
+      "game": "puzzle",
       "data": "none"
     },
     {

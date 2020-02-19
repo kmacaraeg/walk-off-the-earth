@@ -66,7 +66,7 @@ const crosswordLA =
       clue: 'The five fields that an individual can be recognized in on the Hollywood Walk of Fame are: film, TV, radio, live performance and _____',
       direction: 'down',
       length: 5,
-      group: ['5-dowm'],
+      group: ['5-down'],
       position: { x: 2, y: 8 },
       separatorLocations: {
         ',': [4],
@@ -91,8 +91,8 @@ const crosswordLA =
   solutionAvailable: true,
   dateSolutionAvailable: 1542326400000,
   dimensions: {
-    cols: 17 ,
-    rows: 17,
+    cols: 15 ,
+    rows: 15,
   },
   crosswordType: 'quick',
 }
