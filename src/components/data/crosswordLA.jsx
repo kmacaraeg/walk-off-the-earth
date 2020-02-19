@@ -1,4 +1,4 @@
-const crosswordSF =
+const crosswordLA =
 {
   id: 'simple/1',
   number: 1,
@@ -87,29 +87,14 @@ const crosswordSF =
       },
       solution: 'BURLINGTON',
     },
-    // {
-    //   id: '6-across',
-    //   number: 4,
-    //   humanNumber: '4',
-    //   clue: 'Walk Off the Earth originated in __________, Ontario',
-    //   direction: 'across',
-    //   length: 4,
-    //   group: ['3-down', '4-down'],
-    //   position: {
-    //     x: 6,
-    //     y: 1,
-    //   },
-    //   separatorLocations: {},
-    //   solution: 'BURLINGTON',
-    // },
   ],
   solutionAvailable: true,
   dateSolutionAvailable: 1542326400000,
   dimensions: {
-    cols: 15 ,
-    rows: 15,
+    cols: 17 ,
+    rows: 17,
   },
   crosswordType: 'quick',
 }
 
-export default crosswordSF
+export default crosswordLA

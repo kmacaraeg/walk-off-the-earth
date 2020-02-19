@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Crossword from "react-crossword";
 import Slider from "react-slider-game";
-import ReactCompareImage from 'react-compare-image';
+// import ReactCompareImage from 'react-compare-image';
 import tourStops from './components/data/tourStops.jsx';
 // import MemoryGame from "react-memory-game";
 import mapVector from './components/mapVector';
@@ -10,6 +10,7 @@ import MemoryGame from "./components/memoryGame";
 // import Drawing, { brushCustom } from 'react-drawing';
 import CanvasDraw from "react-canvas-draw";
 import CompareImgInput from "./components/CompareImgInput";
+import crosswordLA from "./components/data/crosswordLA"
 
 import {
   BrowserRouter as Router,
@@ -274,7 +275,7 @@ class App extends Component {
       case "home":
         return mapVector()
       case "crossword":
-        return <Crossword data={this.state.currentData} />;
+        return <Crossword data={crosswordLA} />;
       case "coloring":
         return <DrawingWrap >
           <CanvasDraw brushColor={"red"} imgSrc={"./img/" + this.state.currentData} />

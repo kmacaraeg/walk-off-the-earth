@@ -63,9 +63,9 @@ class CompareImgInput extends Component{
                 tempArr.push(str)
                 alert(tempArr)
                 
-                if(this.state.answers !== )
+                // if(this.state.answers !== )
 
-                }   
+                // }   
 
             } 
 

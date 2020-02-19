@@ -18,7 +18,7 @@ const tourStops = [
       "city": "Los Angeles",
       "state": "California",
       "game": "crossword",
-      "data": crosswordLA
+      "data2": "crosswordLA"
     },
     {
       "date1": 2,
@@ -54,7 +54,7 @@ const tourStops = [
       "city": "Dallas",
       "state": "Texas",
       "game": "crossword",
-      "data": "none"
+      "data": crosswordLA
     },
     {
       "date1": 2,
@@ -81,7 +81,7 @@ const tourStops = [
       "city": "Orlando",
       "state": "Florida",
       "game": "crossword",
-      "data": "none"
+      "data": crosswordLA
     },
     {
       "date1": 2,
@@ -108,7 +108,7 @@ const tourStops = [
       "city": "Portland",
       "state": "Oregon",
       "game": "crossword",
-      "data": "none"
+      "data": crosswordLA
     },
     {
       "date1": 4,
@@ -144,7 +144,7 @@ const tourStops = [
       "city": "Somerville",
       "state": "Massachussets",
       "game": "crossword",
-      "data": "none"
+      "data": crosswordLA
     },
     {
       "date1": 4,
@@ -171,7 +171,7 @@ const tourStops = [
       "city": "Royal Oak",
       "state": "Michigan",
       "game": "crossword",
-      "data": "none"
+      "data": crosswordLA
     },
     {
       "date1": 4,
@@ -216,7 +216,7 @@ const tourStops = [
       "city": "Minneapolis",
       "state": "Minnesota",
       "game": "crossword",
-      "data": "none"
+      "data": crosswordLA
     }
   ]
 
