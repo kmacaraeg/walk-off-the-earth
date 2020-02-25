@@ -1,3 +1,7 @@
+* {
+  transition: .2s ease;
+}
+
 .App {
   text-align: center;
 }
@@ -6,7 +10,7 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+ 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -22,7 +26,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  font-family: Helvetica, sans-serif
 }
 
 .App-link {
@@ -38,12 +41,12 @@
   }
 }
 
-.state {
+/* .state {
   fill: black;
   transition: .3s ease;
   stroke: pink;
   stroke-width: 5px;
-}
+} */
 
 .state:hover {
   fill: white;
@@ -58,4 +61,23 @@
 
 .btn-new-game button {
   display: none
+}
+
+.socialLinks{
+  transition:all .3s;
+}
+.socialLinks:hover{
+  color:rgb(40, 40, 40);
+  transform:scale(1.1);
+}
+.closeButton{
+  transition: all .3s;
+}
+.closeButton:hover{
+  color:#000;
+  background:#fff;
+}
+
+#usamap {
+  box-shadow: 5px 5px 10px rgba(0,0,0,.4)
 }

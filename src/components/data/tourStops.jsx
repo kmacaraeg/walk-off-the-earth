@@ -1,4 +1,4 @@
-import crosswordSF from "./crosswordSF"
+import crosswordDAL from "./crosswordDAL"
 import crosswordLA from "./crosswordLA"
 
 const tourStops = [
@@ -55,7 +55,7 @@ const tourStops = [
       "city": "Dallas",
       "state": "Texas",
       "game": "crossword",
-      "data": crosswordLA
+      "data": crosswordDAL
     },
     {
       "date1": 2,
@@ -73,7 +73,7 @@ const tourStops = [
       "city": "Huntsville",
       "state": "Alabama",
       "game": "coloring",
-      "data": "none"
+      "data": "WOTE_ColoringBook_4.png"
     },
     {
       "date1": 2,
@@ -136,7 +136,7 @@ const tourStops = [
       "city": "Washington",
       "state": "DC",
       "game": "coloring",
-      "data": "none"
+      "data": "WOTE_ColoringBook_3.png"
     },
     {
       "date1": 4,
@@ -190,12 +190,12 @@ const tourStops = [
       "city": "St. Louis",
       "state": "Missouri",
       "game": "coloring",
-      "data": "none"
+      "data": "WOTE_ColoringBook_4.png"
     },
     {
       "date1": 4,
       "date2": 17,
-      "venue": "The Center for the Performin Arts",
+      "venue": "The Center for the PA",
       "city": "Camel",
       "state": "Indiana",
       "game": "waldo",

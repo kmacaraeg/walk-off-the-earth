@@ -1,6 +1,6 @@
 const crosswordLA =
 {
-  id: 'simple/1',
+  id: 'los angeles',
   number: 1,
   name: 'Simple Crossword 1',
   date: 1542326400000,

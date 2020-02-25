@@ -6,16 +6,20 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "animejs": "^3.1.0",
     "react": "^16.12.0",
     "react-canvas-draw": "^1.1.0",
     "react-compare-image": "^2.0.4",
     "react-crossword": "^0.1.7",
     "react-dom": "^16.12.0",
     "react-drawing": "^1.0.0",
+    "react-hamburger-menu": "^1.1.1",
+    "react-iframe": "^1.8.0",
     "react-memory-game": "^1.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-slider-game": "^0.2.8",
+    "react-tooltip": "^4.0.3",
     "styled-components": "^5.0.0"
   },
   "scripts": {
@@ -38,5 +42,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmacaraeg/walk-off-the-earth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmacaraeg/walk-off-the-earth/issues"
+  },
+  "homepage": "https://github.com/kmacaraeg/walk-off-the-earth#readme"
 }
