@@ -9,7 +9,7 @@ const tourStops = [
       "city": "San Francisco",
       "state": "California",
       "game": "coloring",
-      "data": "WOTE_ColoringBook_4.png"
+      "data": "WOTE_coloring_1.png"
     },
     {
       "date1": 2,
@@ -18,7 +18,7 @@ const tourStops = [
       "city": "Los Angeles",
       "state": "California",
       "game": "crossword",
-      "data2": "crosswordLA"
+      "data": crosswordLA
     },
     {
       "date1": 2,
@@ -27,7 +27,7 @@ const tourStops = [
       "city": "El Cajon",
       "state": "California",
       "game": "coloring",
-      "data": "WOTE_ColoringBook_3.png"
+      "data": "WOTE_coloring_2.png"
     },
     {
       "date1": 2,
@@ -35,9 +35,8 @@ const tourStops = [
       "venue": "Fox Performing Arts Center",
       "city": "Riverside",
       "state": "California",
-      "game": "waldo",
-      "data": ["123","456","789"],
-      "data2": "Waldo_1.jpg"
+      "game": "puzzle",
+      "data": "WOTE_slider_1.jpg"
     },
     {
       "date1": 2,
@@ -45,8 +44,9 @@ const tourStops = [
       "venue": "The Van Buren",
       "city": "Phoenix",
       "state": "Arizona",
-      "game": "puzzle",
-      "data": ""
+      "game": "waldo",
+      "data": "Waldo_1.jpg",
+      "data2": ["taco","butterfly","dog", "ice cream", "skateboard"]
     },
     {
       "date1": 2,
@@ -54,8 +54,8 @@ const tourStops = [
       "venue": "Majestic Theater",
       "city": "Dallas",
       "state": "Texas",
-      "game": "crossword",
-      "data": crosswordDAL
+      "game": "puzzle",
+      "data": "WOTE_slider_2.jpg"
     },
     {
       "date1": 2,
@@ -63,8 +63,8 @@ const tourStops = [
       "venue": "The Aztec Theater",
       "city": "San Antonio",
       "state": "Texas",
-      "game": "waldo",
-      "data": "none"
+      "game": "coloring",
+      "data": "WOTE_coloring_6.png"
     },
     {
       "date1": 2,
@@ -73,7 +73,7 @@ const tourStops = [
       "city": "Huntsville",
       "state": "Alabama",
       "game": "coloring",
-      "data": "WOTE_ColoringBook_4.png"
+      "data": "WOTE_coloring_7.png"
     },
     {
       "date1": 2,
@@ -81,8 +81,9 @@ const tourStops = [
       "venue": "Seven Seas Concert Series",
       "city": "Orlando",
       "state": "Florida",
-      "game": "crossword",
-      "data": crosswordLA
+      "game": "waldo",
+      "data": "Waldo_2.jpg",
+      "data2": ["smiley","wood","flower", "overtime", "walk off the earth", "headphones", "taco", "guitar"]
     },
     {
       "date1": 2,
@@ -90,8 +91,8 @@ const tourStops = [
       "venue": "Buckhead Theatre",
       "city": "Atlanta",
       "state": "Georgia",
-      "game": "waldo",
-      "data": "none"
+      "game": "coloring",
+      "data": "WOTE_coloring_8.png"
     },
     {
       "date1": 2,
@@ -100,7 +101,7 @@ const tourStops = [
       "city": "Chattanooga",
       "state": "Tennesee",
       "game": "puzzle",
-      "data": "none"
+      "data": "WOTE_slider_3.jpg"
     },
     {
       "date1": 4,
@@ -108,8 +109,8 @@ const tourStops = [
       "venue": "State Theatre",
       "city": "Portland",
       "state": "Oregon",
-      "game": "crossword",
-      "data": crosswordLA
+      "game": "puzzle",
+      "data": "WOTE_coloring_10.png"
     },
     {
       "date1": 4,
@@ -117,8 +118,8 @@ const tourStops = [
       "venue": "The Fillmore",
       "city": "Philadelphia",
       "state": "Pennsylvania",
-      "game": "waldo",
-      "data": ["123", "456", "789"]
+      "game": "puzzle",
+      "data": "WOTE_slider_6.jpg"
     },
     {
       "date1": 4,
@@ -126,8 +127,8 @@ const tourStops = [
       "venue": "The National",
       "city": "Richmond",
       "state": "Virginia",
-      "game": "puzzle",
-      "data": "none"
+      "game": "coloring",
+      "data": "WOTE_coloring_12.png"
     },
     {
       "date1": 4,
@@ -135,8 +136,9 @@ const tourStops = [
       "venue": "Lincoln Theatre",
       "city": "Washington",
       "state": "DC",
-      "game": "coloring",
-      "data": "WOTE_ColoringBook_3.png"
+      "game": "waldo",
+      "data": "Waldo_3.jpg",
+      "data2": ["fork and knife","trophy","alien", "bubbles", "volleyball", "pineapple"]
     },
     {
       "date1": 4,
@@ -144,8 +146,8 @@ const tourStops = [
       "venue": "Somerville Theatre",
       "city": "Somerville",
       "state": "Massachussets",
-      "game": "crossword",
-      "data": crosswordLA
+      "game": "coloring",
+      "data": "WOTE_coloring_14.png"
     },
     {
       "date1": 4,
@@ -153,8 +155,8 @@ const tourStops = [
       "venue": "Paramount Theatre",
       "city": "Ashbury Park",
       "state": "New Jersey",
-      "game": "waldo",
-      "data": "none"
+      "game": "coloring",
+      "data": "WOTE_coloring_15.png"
     },
     {
       "date1": 4,
@@ -162,8 +164,8 @@ const tourStops = [
       "venue": "Whitaker Center",
       "city": "Harrisburg",
       "state": "Pennsylvania",
-      "game": "waldo",
-      "data": "none"
+      "game": "coloring",
+      "data": "WOTE_coloring_16.png"
     },
     {
       "date1": 4,
@@ -171,8 +173,8 @@ const tourStops = [
       "venue": "Royal Oak Music Theatre",
       "city": "Royal Oak",
       "state": "Michigan",
-      "game": "crossword",
-      "data": crosswordLA
+      "game": "coloring",
+      "data": "WOTE_coloring_17.png"
     },
     {
       "date1": 4,
@@ -180,8 +182,9 @@ const tourStops = [
       "venue": "20 Monroe Live",
       "city": "Grand Rapids",
       "state": "Michigan",
-      "game": "puzzle",
-      "data": "none"
+      "game": "waldo",
+      "data": "Waldo_4.jpg",
+      "data2": ["dog","skull","burger", "eyeball", "moon"]
     },
     {
       "date1": 4,
@@ -189,17 +192,18 @@ const tourStops = [
       "venue": "The Pageant",
       "city": "St. Louis",
       "state": "Missouri",
-      "game": "coloring",
-      "data": "WOTE_ColoringBook_4.png"
+      "game": "waldo",
+      "data2": ["rocket","drink","spatula", "guitar", "butterfly", "wote"],
+      "data": "Waldo_5.jpg"
     },
     {
       "date1": 4,
       "date2": 17,
       "venue": "The Center for the PA",
-      "city": "Camel",
+      "city": "Carmel",
       "state": "Indiana",
-      "game": "waldo",
-      "data": "none"
+      "game": "puzzle",
+      "data": "WOTE_slider_4.jpg"
     },
     {
       "date1": 4,
@@ -207,8 +211,8 @@ const tourStops = [
       "venue": "Athenaeum Theatre",
       "city": "Chicago",
       "state": "Illinois",
-      "game": "puzzle",
-      "data": "none"
+      "game": "coloring",
+      "data": "WOTE_coloring_20.png"
     },
     {
       "date1": 4,
@@ -216,8 +220,8 @@ const tourStops = [
       "venue": "The Fillmore",
       "city": "Minneapolis",
       "state": "Minnesota",
-      "game": "crossword",
-      "data": crosswordLA
+      "game": "puzzle",
+      "data": "WOTE_slider_5.jpg"
     }
   ]
 

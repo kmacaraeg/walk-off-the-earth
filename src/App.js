@@ -21,6 +21,7 @@ import Socials from "./components/Socials";
 import ReactTooltip from 'react-tooltip'
 
 import PrizeModal from "./components/PrizeModal"
+import SlidingTilePuzzle from 'react-sliding-tile-puzzle';
 
 import {
   BrowserRouter as Router,
@@ -29,6 +30,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+
 
 
 const Scoreboard = styled.div`
@@ -46,6 +48,17 @@ const Scoreboard = styled.div`
   //   }
 
   // }
+
+  animation: show 5s linear;
+  @keyframes show {
+    from {
+opacity: 0
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
 
 `
 const Badge = styled.div`
@@ -86,6 +99,19 @@ const DynamicWrap = styled.div`
   align-items: center;
   background-size: cover;
 
+  .rotating-dude {
+    easing: none;
+    animation: spin 80s linear infinite;
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+
 `
 
 const MapVectorWrap = styled.div`
@@ -97,6 +123,7 @@ const MapVectorWrap = styled.div`
   align-items: center;
   justify-content: center;
   // padding: 700px;
+  z-index: 100;
 
   .state {
     transition: .2s ease;
@@ -110,15 +137,81 @@ const MapVectorWrap = styled.div`
 
   .city {
     transition: .2s ease;
-    fill: ${props => props.theme.yellow};
+    fill: ${props => props.theme.purple};
     stroke-width: 10px;
     stroke: white;
     box-shadow: 10px 10px rgba(0,0,0,.5);
     &:hover {
       fill: ${props => props.theme.green};
-      stroke:${props => props.theme.green};
+      stroke:${props => props.theme.purple};
       stroke-width: 150px;
       cursor: pointer;
+    }
+  }
+
+  .crosswordCity {
+    fill: ${props => props.theme.yellow};
+    &:hover {
+      fill: ${props => props.theme.yellow};
+      stroke:${props => props.theme.yellow};
+      stroke-width: 150px;
+      cursor: pointer;
+    }
+  }
+
+  .waldoCity {
+    fill: ${props => props.theme.pink};
+    &:hover {
+      fill: ${props => props.theme.pink};
+      stroke:white;
+      stroke-width: 150px;
+      cursor: pointer;
+    }
+  }
+
+  .puzzleCity {
+    fill: ${props => props.theme.green};
+    &:hover {
+      fill: ${props => props.theme.green};
+      stroke:white;
+      stroke-width: 150px;
+      cursor: pointer;
+    }
+  }
+
+  easing: none;
+  animation: show 5s linear;
+    @keyframes show {
+      from {
+opacity: 0
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+
+`
+
+const RotatingDude = styled.div`
+
+  height: 700px;
+  width: 700px;
+  background: url(img/WOTE_spiral.png);
+  background-postion: center;
+  background-size: contain;
+  position: fixed;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
+
+  animation: show 5s linear;
+  @keyframes show {
+    from {
+opacity: 0
+    }
+    to {
+      opacity: 1;
     }
   }
 
@@ -164,7 +257,7 @@ const GameNavigator = styled.div`
 
 const Game = styled.div`
 
-  height: 600px;
+  max-height: 600px;
   display: flex;
   border: 3px solid ${props => props.theme.pink};
   width: 100%;
@@ -183,16 +276,14 @@ const Game = styled.div`
 const MapListItem = styled.div`
 
   // background-color: gray;
+  width: 480px;
   min-height: 40px;
   padding: 0 20px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-
-  // &:hover {
-  //   margin-top: 5px;
-  // }
+  color: white;
 
   &:active .date {
     background-color: ${props => props.theme.pink};
@@ -201,7 +292,7 @@ const MapListItem = styled.div`
   .date {
     background-color: ${props => props.theme.pink};
     color: white;
-    padding: 30px 10px;
+    padding: 10px 10px;
     width: 50px;
     display: flex;
     justify-content: center;
@@ -221,8 +312,11 @@ const MapListItem = styled.div`
 
   .mapInfo{
     display: flex;
-    flex-direction: column;
-    
+    align-items: center;
+    span {
+      margin-right: 20px;
+    }
+
   }
 
   .cityName {
@@ -240,6 +334,9 @@ const MapListItem = styled.div`
     font-style: italic;
   }
 
+  a {
+    color: white;
+  }
 
 `
 
@@ -252,21 +349,21 @@ const Hamburger = styled.div`
 
 `
 
-const RenderMapList = styled.div`
+// const RenderMapList = styled.div`
 
-  overflow: scroll;
+//   overflow: scroll;
 
-`
+// `
 
-const TourStopList = styled.div`
+// const TourStopList = styled.div`
 
-  overflow: scroll;
-  width: 400px;
-  background-color: white;
-  box-shadow: 0px 0px 10px rgba(0,0,0,.5);
-  z-index; 400;
+//   overflow: scroll;
+//   width: 400px;
+//   background-color: white;
+//   box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+//   z-index; 400;
 
-`
+// `
 
 const GameRender = styled.div`
 
@@ -352,6 +449,17 @@ const WOTELogo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
 
+  animation: show 5s linear;
+    @keyframes show {
+      from {
+opacity: 0
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+
 `
 
 const PrizeButton = styled.div`
@@ -381,7 +489,7 @@ const PrizeButton = styled.div`
 `
 
 const Modal = styled.div`
-
+  padding: 200px;
   display: ${props => (props.modalShown === true) ? "flex" : "none"};
   postition: fixed;
   height: 100vh;
@@ -396,13 +504,25 @@ const Modal = styled.div`
 const Menu = styled.div`
 
   display: ${props => (props.open === true) ? "flex" : "none"};
-  postition: fixed;
-  height: 100vh;
+  position: fixed;
   width: 100vw;
-  background-color: rgba(0,0,0,.3);
-  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0,0,0,.6);
   align-items: center;
-  z-index: 550;
+  z-index: 800;
+  flex-direction: column;
+  overflow: scroll;
+  padding: 200px 0;
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+
+  .iframe {
+    border: none;
+  }
 
   .menuWrap {
     display: flex;
@@ -412,19 +532,72 @@ const Menu = styled.div`
     padding: 20px
   }
 
+  .menu-container {
+    padding: 20px;
+  }
+
+  .merch {
+  padding: 40px;
+    height: 200px;
+  width: 400px;
+  background-color: white;
+  }
+
 `
 const Intro = styled.div`
 
   z-index: 700;
   position: fixed;
-  background: gray;
+  background: rgba(0,0,0,.6);
   height: 100vh;
   width: 100vw;
-  display: ${props => (props.siteEntered === true) ? "flex" : "none"};
+  display: ${props => (props.siteEntered === true) ? "none" : "flex"};
   justify-content: center;
   align-items: center;
+  color: white;
+  flex-direction: column;
 
-  .introItemsWrap;
+
+  .intro-cont {
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .alien {
+    background: url(img/alien.gif);
+    background-size: contain;
+    height: 170px;
+    width: 200px;
+  }
+
+  .enter {
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    color: black;
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    
+    &:hover {
+      color: white;
+      background: none;
+      border: 3px solid white;
+    }
+  }
+
+  // .introItemsWrap;
+
+  .instructions {
+    max-width: 400px;
+  }
 
 `
 
@@ -465,6 +638,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
+    document.addEventListener("keydown", this.setState({ currentGame: "home", modalShown: false, open: false }))
     this.anime1()
 
   }
@@ -477,17 +651,9 @@ class App extends Component {
 
     if (this.state.completedCrosswords > 0 && this.state.completedColoring > 0 && this.state.completedPuzzle > 0 && this.state.completedWaldo > 0 && this.state.gameState === 0) {
       this.setState({ gameState: 1 })
-      // alert("win!")
-    }
-
-    if (this.state.open) {
-      // alert("Test")
-      return <Modal/>
-
     }
 
 
-    // this.renderModal()
   }
 
   finishGame = () => {
@@ -553,7 +719,7 @@ class App extends Component {
     var tl = anime.timeline({
       easing: "spring(1, 80, 10, 0)",
       duration: 300,
-      complete: function(anim) {
+      complete: function (anim) {
         // document.getElementByClass("game-container").style.display = "none";
       }
     });
@@ -563,7 +729,7 @@ class App extends Component {
       opacity: "0",
       translateY: "100vh"
     }).add({
-      
+
     })
   }
 
@@ -592,12 +758,24 @@ class App extends Component {
           return <Crossword data={this.whichCrossword(this.state.currentCity)} />;
         case "coloring":
           return <DrawingWrap >
-                  <Drawing imgSrc={"./img/" + this.state.currentData} canvasWidth={80 + `%`} canvasHeight={100 + `%`} />
-                </DrawingWrap>
+            <Drawing imgSrc={"./img/" + this.state.currentData} canvasWidth={80 + `%`} canvasHeight={100 + `%`} />
+          </DrawingWrap>
         case "puzzle":
-          return <Slider size={3} />;
+            return <SlidingTilePuzzle
+            maxIterations={300}
+            image={"img/" + this.state.currentData}
+            size={600}
+          />;
+          //   return      <SlidingTilePuzzle
+          //   solvePuzzle={this.state.solvePuzzle}
+          //   newPuzzle={this.state.newPuzzle}
+          //   maxIterations={300}
+          //   image="serenity-mitchell-1163490-unsplash.jpg"
+          //   size={130}
+          // />;
+
         case "waldo":
-          return <CompareImgInput className="compareImageInput" data={this.state.currentData} rightImage={this.state.currentData2} />
+          return <CompareImgInput className="compareImageInput" data={this.state.currentData2} rightImage={this.state.currentData} />
       }
     }
 
@@ -643,9 +821,6 @@ class App extends Component {
     });
 
     tl.add({
-      // targets: ".game-container",
-      // opacity: "1",
-    }).add({
       targets: "#Layer_2 .city",
       delay: anime.stagger(100),
       opacity: "1",
@@ -653,29 +828,13 @@ class App extends Component {
     }, 200)
   }
 
-  // renderModal(){
-  //   if(this.state.modalShown === true) {
-  //     alert("test")
-  //     return <Modal/>
-  //   }
-  // }
-
   render() {
 
     return (
       <Router>
         <div>
-        <ReactTooltip />
+          <ReactTooltip />
 
-          <Modal modalShown={this.state.modalShown}>
-            <PrizeModal />
-          </Modal>
-          <Menu open={this.state.open}>
-            menu
-          </Menu>
-          <Intro siteEntered={this.state.siteEntered}>
-
-          </Intro>
 
           <Switch>
 
@@ -683,10 +842,60 @@ class App extends Component {
 
               <DynamicWrap>
 
+
+                <Intro siteEntered={this.state.siteEntered}>
+
+                  <div className="intro-cont">
+                    <div className="alien"></div>
+                    <h1>Here We Go!</h1>
+                    <p className="instructions">We're on tour! We made games for all of our tour spots. Discover something new in every city and collect stars. Collect one of each star and win something special! 🌎</p>
+                    <div className="enter" onClick={() => { this.setState({ siteEntered: true }) }}>enter</div>
+                  </div>
+
+                </Intro>
+
+                <Modal modalShown={this.state.modalShown}>
+                  <PrizeModal />
+                </Modal>
+
+                <Menu open={this.state.open}>
+                  <div className="menu-container">
+                    <h2>Tour</h2>
+                    {/* <a href="https://www.bandsintown.com/a/158776-walk-off-the-earth?came_from=242">Tour!</a> */}
+                    {tourStops && tourStops.map((x, i) => (
+                      <MapListItem theme={this.state.theme} onClick={() => { this.setState({ open: false }) }}>
+                        <div className="listItemWrap">
+                          <div className="date">
+                            <span className="date1">{x.date1}</span>/<span className="date1">{x.date2}</span>
+                          </div>
+                          <div className="mapInfo" data-tip="Play Game" onClick={this.changeGame.bind(this, x.game, x.city, x.state, x.date, x.data, x.data2, x.title, x.instructions, x.venue)} >
+                            <span className="cityName">{x.city} </span>
+                            <span className="venue">{x.venue} </span>
+                          </div>
+                        </div>
+                        <a href="#">Buy Tickets</a>
+                        {/* {this.renderMapListBadge(x.game)} */}
+                      </MapListItem>
+                    ))
+                    }
+                  </div>
+                  <div className="menu-container">
+                    <h2>Music</h2>
+                    <Iframe className="iframe" url="https://open.spotify.com/embed/album/02TmceYFis4XKcjCZ86eBP" width="500px" height="400px" border="none"></Iframe>
+                  </div>
+                  <div className="menu-container">
+                    <h2>Merch</h2>
+                    <div className="merch" >
+                      <a href="https://walkofftheearth.myshopify.com/">Shop</a>
+                    </div>
+                  </div>
+                </Menu>
+
                 <WOTELogo />
-                <Hamburger>
+                <Hamburger style={{ zIndex: "900" }}>
                   <Socials theme={this.state.theme} />
                   <HamburgerMenu
+
                     className="hamburger"
                     isOpen={this.state.open}
                     menuClicked={this.menuHandleClick.bind(this)}
@@ -705,7 +914,6 @@ class App extends Component {
                 </PrizeButton>
 
                 <Scoreboard>
-
                   <Badge className="scoreboardBadge" star={this.renderCompletionStatus("crossword", this.state.completedCrosswords)}></Badge>
                   <Badge className="scoreboardBadge" star={this.renderCompletionStatus("coloring", this.state.completedColoring)}></Badge>
                   <Badge className="scoreboardBadge" star={this.renderCompletionStatus("puzzle", this.state.completedPuzzle)}></Badge>
@@ -719,11 +927,13 @@ class App extends Component {
                   </MapRender>
                 </MapVectorWrap>
 
+                <RotatingDude className="rotating-dude"></RotatingDude>
+
                 <GameContainer className="game-container" show={this.state.currentGame}>
                   <GameNavigator theme={this.state.theme}>
+                    <button onClick={() => { this.setState({ currentGame: "home" }) }}>Back to Home</button>
                     <h1>{this.state.currentCity}</h1>
-                    <button onClick={() => { this.setState({ currentGame: "home"}) }}>Home</button>
-                    <button>Tour Dates</button>
+                    <button onClick={() => { this.setState({ open: true, currentGame: "home" }) }}>See Tour Dates</button>
                   </GameNavigator>
                   <Game theme={this.state.theme}>
                     {/* <TourStopList>

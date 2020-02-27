@@ -4,10 +4,10 @@ import tourStops from "./data/tourStops";
 
 let mapVector = (changeGame) => {
     return(
-<svg version="1.1" 
+<svg version="1.1"
 	 viewBox="0 0 4025.5 2578.2" >
 
-<g id="usamap">
+<g >
 	<g id="states">
 		<polygon className="state" points="2718.2,1967.8 2717.6,1974.8 2737.6,1995.3 2735.1,2013.6 2730.6,2026.6 2659.6,2022.8 
 			2645.5,1884.1 2646.8,1738.1 2650.1,1619.7 2643.2,1602.7 2736.6,1594 2832.1,1584.9 2864.5,1694.6 2893.1,1782.2 2907.4,1809.1 
@@ -285,29 +285,29 @@ let mapVector = (changeGame) => {
 </g>
 <g id="Layer_2">
 	<circle className="city" data-tip="San Francisco" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[0].game,tourStops[0].city,tourStops[0].state,tourStops[0].date,tourStops[0].data,tourStops[0].data2)}} cx="183.3" cy="1100.4" r="24.9"/>
-	<circle className="city" data-tip="Los Angeles" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[1].game,tourStops[1].city,tourStops[1].state,tourStops[1].date,tourStops[1].data,tourStops[1].data2)}} cx="372.6" cy="1505.8" r="24.9"/>
+	<circle className="city crosswordCity" data-tip="Los Angeles" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[1].game,tourStops[1].city,tourStops[1].state,tourStops[1].date,tourStops[1].data,tourStops[1].data2)}} cx="372.6" cy="1505.8" r="24.9"/>
 	<circle className="city" data-tip="El Cajon" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[2].game,tourStops[2].city,tourStops[2].state,tourStops[2].date,tourStops[2].data,tourStops[2].data2)}} cx="475.2" cy="1602.5" r="24.9"/>
-	<circle className="city" data-tip="Riverside" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[3].game,tourStops[3].city,tourStops[3].state,tourStops[3].date,tourStops[3].data,tourStops[3].data2)}} cx="467.9" cy="1505.8" r="24.9"/>
-	<circle className="city" data-tip="Phoenix" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[4].game,tourStops[4].city,tourStops[4].state,tourStops[4].date,tourStops[4].data,tourStops[4].data2)}} cx="872.1" cy="1664.6" r="24.9"/>
-	<circle className="city" data-tip="Dallas" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[5].game,tourStops[5].city,tourStops[5].state,tourStops[5].date,tourStops[5].data,tourStops[5].data2)}} cx="1963.3" cy="1871.1" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Riverside" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[3].game,tourStops[3].city,tourStops[3].state,tourStops[3].date,tourStops[3].data,tourStops[3].data2)}} cx="467.9" cy="1505.8" r="24.9"/>
+	<circle className="city waldoCity" data-tip="Phoenix" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[4].game,tourStops[4].city,tourStops[4].state,tourStops[4].date,tourStops[4].data,tourStops[4].data2)}} cx="872.1" cy="1664.6" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Dallas" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[5].game,tourStops[5].city,tourStops[5].state,tourStops[5].date,tourStops[5].data,tourStops[5].data2)}} cx="1963.3" cy="1871.1" r="24.9"/>
 	<circle className="city" data-tip="San Antonio" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[6].game,tourStops[6].city,tourStops[6].state,tourStops[6].date,tourStops[6].data,tourStops[6].data2)}} cx="1865.2" cy="2092.1" r="24.9"/>
 	<circle className="city" data-tip="Huntsville" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[7].game,tourStops[7].city,tourStops[7].state,tourStops[7].date,tourStops[7].data,tourStops[7].data2)}} cx="2742.5" cy="1609.8" r="24.9"/>
-	<circle className="city" data-tip="Orlando" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[8].game,tourStops[8].city,tourStops[8].state,tourStops[8].date,tourStops[8].data,tourStops[8].data2)}} cx="3270.4" cy="2117" r="24.9"/>
+	<circle className="city waldoCity" data-tip="Orlando" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[8].game,tourStops[8].city,tourStops[8].state,tourStops[8].date,tourStops[8].data,tourStops[8].data2)}} cx="3270.4" cy="2117" r="24.9"/>
 	<circle className="city" data-tip="Atlanta" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[9].game,tourStops[9].city,tourStops[9].state,tourStops[9].date,tourStops[9].data,tourStops[9].data2)}} cx="2956.9" cy="1725.8" r="24.9"/>
-	<circle className="city" data-tip="Chattanooga" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[10].game,tourStops[10].city,tourStops[10].state,tourStops[10].date,tourStops[10].data,tourStops[10].data2)}} cx="2856.9" cy="1571.5" r="24.9"/>
-	<circle className="city" data-tip="Portland" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[11].game,tourStops[11].city,tourStops[11].state,tourStops[11].date,tourStops[11].data,tourStops[11].data2)}} cx="372.6" cy="416" r="24.9"/>
-	<circle className="city" data-tip="Philadelphia" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[12].game,tourStops[12].city,tourStops[12].state,tourStops[12].date,tourStops[12].data,tourStops[12].data2)}} cx="3489.3" cy="1015.3" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Chattanooga" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[10].game,tourStops[10].city,tourStops[10].state,tourStops[10].date,tourStops[10].data,tourStops[10].data2)}} cx="2856.9" cy="1571.5" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Portland" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[11].game,tourStops[11].city,tourStops[11].state,tourStops[11].date,tourStops[11].data,tourStops[11].data2)}} cx="372.6" cy="416" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Philadelphia" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[12].game,tourStops[12].city,tourStops[12].state,tourStops[12].date,tourStops[12].data,tourStops[12].data2)}} cx="3489.3" cy="1015.3" r="24.9"/>
 	<circle className="city" data-tip="Richmond" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[13].game,tourStops[13].city,tourStops[13].state,tourStops[13].date,tourStops[13].data,tourStops[13].data2)}} cx="3420.5" cy="1248.1" r="24.9"/>
-	<circle className="city" data-tip="Washington" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[14].game,tourStops[14].city,tourStops[14].state,tourStops[14].date,tourStops[14].data,tourStops[14].data2)}} cx="3395.6" cy="1133.6" r="24.9"/>
+	<circle className="city waldoCity" data-tip="Washington" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[14].game,tourStops[14].city,tourStops[14].state,tourStops[14].date,tourStops[14].data,tourStops[14].data2)}} cx="3395.6" cy="1133.6" r="24.9"/>
 	<circle className="city" data-tip="Somerville" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[15].game,tourStops[15].city,tourStops[15].state,tourStops[15].date,tourStops[15].data,tourStops[15].data2)}} cx="3748.6" cy="737.3" r="24.9"/>
 	<circle className="city" data-tip="Ashbury Park" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[16].game,tourStops[16].city,tourStops[16].state,tourStops[16].date,tourStops[16].data,tourStops[16].data2)}} cx="3563.6" cy="969.1" r="24.9"/>
 	<circle className="city" data-tip="Harrisburg" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[17].game,tourStops[17].city,tourStops[17].state,tourStops[17].date,tourStops[17].data,tourStops[17].data2)}} cx="3384.8" cy="1043.5" r="24.9"/>
 	<circle className="city" data-tip="Royal Oak" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[18].game,tourStops[18].city,tourStops[18].state,tourStops[18].date,tourStops[18].data,tourStops[18].data2)}} cx="2927.9" cy="923.8" r="24.9"/>
-	<circle className="city" data-tip="Grand Rapids" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[19].game,tourStops[19].city,tourStops[19].state,tourStops[19].date,tourStops[19].data,tourStops[19].data2)}} cx="2739.8" cy="874" r="24.9"/>
-	<circle className="city" data-tip="St. Louis" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[20].game,tourStops[20].city,tourStops[20].state,tourStops[20].date,tourStops[20].data,tourStops[20].data2)}} cx="2463.3" cy="1283.3" r="24.9"/>
-	<circle className="city" data-tip="Carmel" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[21].game,tourStops[21].city,tourStops[21].state,tourStops[21].date,tourStops[21].data,tourStops[21].data2)}} cx="2742.5" cy="1154.9" r="24.9"/>
+	<circle className="city waldoCity" data-tip="Grand Rapids" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[19].game,tourStops[19].city,tourStops[19].state,tourStops[19].date,tourStops[19].data,tourStops[19].data2)}} cx="2739.8" cy="874" r="24.9"/>
+	<circle className="city waldoCity" data-tip="St. Louis" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[20].game,tourStops[20].city,tourStops[20].state,tourStops[20].date,tourStops[20].data,tourStops[20].data2)}} cx="2463.3" cy="1283.3" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Carmel" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[21].game,tourStops[21].city,tourStops[21].state,tourStops[21].date,tourStops[21].data,tourStops[21].data2)}} cx="2742.5" cy="1154.9" r="24.9"/>
 	<circle className="city" data-tip="Chicago" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[22].game,tourStops[22].city,tourStops[22].state,tourStops[22].date,tourStops[22].data,tourStops[22].data2)}} cx="2614.3" cy="969.1" r="24.9"/>
-	<circle className="city" data-tip="Minneapolis" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[23].game,tourStops[23].city,tourStops[23].state,tourStops[23].date,tourStops[23].data,tourStops[23].data2)}} cx="2254.2" cy="687.7" r="24.9"/>
+	<circle className="city puzzleCity" data-tip="Minneapolis" onClick={(e)=>{e.preventDefault(); changeGame(tourStops[23].game,tourStops[23].city,tourStops[23].state,tourStops[23].date,tourStops[23].data,tourStops[23].data2)}} cx="2254.2" cy="687.7" r="24.9"/>
 </g>
 </svg>
 

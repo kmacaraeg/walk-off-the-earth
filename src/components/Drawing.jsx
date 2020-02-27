@@ -9,6 +9,7 @@ const DrawingWrapper = styled.div`
 
     display: flex;
     flex-direction: row-reverse;
+    justify-content: left;
 
     #toolbox {
         padding: 20px
@@ -90,7 +91,7 @@ class CanvasDraw2 extends Component {
       };
   
     state = {
-    color: "#ffc600",
+    color: "#ffc60080",
     // width: 100,
     // height: 100,
     brushRadius: 10,
@@ -174,8 +175,12 @@ class CanvasDraw2 extends Component {
                 <div onClick={(e)=>{e.preventDefault(); this.changeColor(this.state.theme.green)}}    className="colorSelector" id="color4"></div>
                 <div onClick={(e)=>{e.preventDefault(); this.changeColor(this.state.theme.pink)}}    className="colorSelector" id="color5"></div>
             </div>
-            <button
+            {/* <button
               onClick={() => {
+                // console.log("hi")
+                console.log()
+                // let dataURL = exportCanvas.toDataURL();
+                // console.log(dataURL)
                 localStorage.setItem(
                   "savedDrawing",
                   this.saveableCanvas.getSaveData()
@@ -183,7 +188,7 @@ class CanvasDraw2 extends Component {
               }}
             >
               Save
-            </button>
+            </button> */}
             <button
               onClick={() => {
                 this.saveableCanvas.clear();
@@ -201,13 +206,13 @@ class CanvasDraw2 extends Component {
           </div>
           
           <CanvasDraw
-  
+            id="exportCanvas"
             ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
             brushColor={this.state.color}
             brushRadius={this.state.brushRadius}
             imgSrc= {this.props.imgSrc}
             lazyRadius={this.state.lazyRadius}
-            canvasWidth={600}
+            canvasWidth={800}
             canvasHeight={600}
           />
       </DrawingWrapper>
