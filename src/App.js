@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import './App.css';
 import styled from 'styled-components';
 import Crossword from "react-crossword";
 import Slider from "react-slider-game";
@@ -23,13 +30,7 @@ import ReactTooltip from 'react-tooltip'
 import PrizeModal from "./components/PrizeModal"
 import SlidingTilePuzzle from 'react-sliding-tile-puzzle';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import './App.css';
+import MobileSite from './components/MobileSite';
 
 
 
@@ -110,6 +111,10 @@ const DynamicWrap = styled.div`
           transform: rotate(360deg);
         }
       }
+    }
+
+    @media(max-width: 1200px){
+      display:none;
     }
 
 `
@@ -512,7 +517,7 @@ const Menu = styled.div`
   z-index: 800;
   flex-direction: column;
   overflow: scroll;
-  padding: 200px 0;
+  padding: 70px 0 100px;
 
   h2 {
     width: 100%;
@@ -842,7 +847,6 @@ class App extends Component {
 
               <DynamicWrap>
 
-
                 <Intro siteEntered={this.state.siteEntered}>
 
                   <div className="intro-cont">
@@ -857,6 +861,7 @@ class App extends Component {
                 <Modal modalShown={this.state.modalShown}>
                   <PrizeModal />
                 </Modal>
+
 
                 <Menu open={this.state.open}>
                   <div className="menu-container">
@@ -968,6 +973,8 @@ class App extends Component {
                 </GameContainer>
 
               </DynamicWrap>
+              <MobileSite theme={this.state.theme} />
+
 
             </Route>
 
@@ -987,3 +994,20 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+// mobile
+// fix waldo square thing
+// winning modal style
+// -------set state ({gamesstate: 1})
+// style merch desktop
+// Crossword styles
+// -------headers and padding
+// resizing shit
+// make molly play all games
