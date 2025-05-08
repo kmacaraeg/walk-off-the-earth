@@ -16,7 +16,7 @@
     "react-hamburger-menu": "^1.1.1",
     "react-iframe": "^1.8.0",
     "react-memory-game": "^1.1.1",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^7.5.2",
     "react-scripts": "3.3.0",
     "react-slider-game": "^0.2.8",
     "react-sliding-tile-puzzle": "^1.0.5",
